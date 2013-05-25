@@ -193,8 +193,8 @@
 						 nil],
 						[NSArray arrayWithObjects:
 						 self.sizeCell,
-						 self.fontCell,
 						 self.colourCell,
+						 self.fontCell,
 						 nil],
 						[NSArray arrayWithObjects:
 						 self.applyAsDefaultCell,
