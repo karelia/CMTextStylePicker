@@ -47,7 +47,7 @@
 
 @synthesize delegate, defaultSettingsSwitchValue, selectedTextColour, selectedFont;
 @synthesize tableLayout, fontSizeControl;
-@synthesize sizeCell, colourCell, fontCell, defaultSettingsCell, applyAsDefaultCell, fontNameLabel, defaultSettingsSwitch;
+@synthesize sizeCell, colourCell, fontCell, defaultSettingsCell, applyAsDefaultCell, defaultSettingsSwitch;
 @synthesize colourView, doneButtonItem;
 
 + (CMTextStylePickerViewController *)textStylePickerViewController {
@@ -114,7 +114,7 @@
 }
 
 - (void)updateFontColourSelections {
-	self.fontNameLabel.text = selectedFont.fontName;
+	self.fontCell.detailTextLabel.text = selectedFont.fontName;
 	self.fontSizeControl.value = selectedFont.pointSize;
 }
 
@@ -169,7 +169,7 @@
 
 - (void)fontSelectTableViewController:(CMFontSelectTableViewController *)fontSelectTableViewController didSelectFont:(UIFont *)textFont {
 	self.selectedFont = textFont;
-	self.fontNameLabel.text = [textFont fontName];
+	self.fontCell.detailTextLabel.text = [textFont fontName];
 	[self notifyDelegateSelectedFontChanged];
 }
 
@@ -404,7 +404,6 @@
 	self.defaultSettingsSwitch = nil;
 	self.doneButtonItem = nil;
 	self.fontCell = nil;
-	self.fontNameLabel = nil;
 	self.fontSizeControl = nil;
 	self.sizeCell = nil;
 }
@@ -418,7 +417,6 @@
 	[defaultSettingsSwitch release];
 	[doneButtonItem release];
 	[fontCell release];
-	[fontNameLabel release];
 	[fontSizeControl release];
 	[selectedTextColour release];
 	[selectedFont release];

@@ -51,7 +51,6 @@
 @property (nonatomic, retain)	IBOutlet	UITableViewCell		*defaultSettingsCell;
 @property (nonatomic, retain)	IBOutlet	UISwitch			*defaultSettingsSwitch;
 @property (nonatomic, retain)	IBOutlet	UITableViewCell		*fontCell;
-@property (nonatomic, retain)	IBOutlet	UILabel				*fontNameLabel;
 @property (nonatomic, retain)	IBOutlet	CMUpDownControl		*fontSizeControl;
 @property (nonatomic, retain)	IBOutlet	UITableViewCell		*sizeCell;
 
