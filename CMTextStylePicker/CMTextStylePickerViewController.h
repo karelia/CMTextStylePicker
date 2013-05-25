@@ -40,6 +40,7 @@
 
 @property (nonatomic, assign)	id<CMTextStylePickerViewControllerDelegate> delegate;
 
+@property (nonatomic)           BOOL        showsDefaultSettingsControls;
 @property (nonatomic, assign)	BOOL		defaultSettingsSwitchValue;
 @property (nonatomic, retain)	UIColor		*selectedTextColour;
 @property (nonatomic, retain)	UIFont		*selectedFont;

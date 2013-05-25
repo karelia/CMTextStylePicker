@@ -52,6 +52,7 @@
 
 + (CMTextStylePickerViewController *)textStylePickerViewController {
 	CMTextStylePickerViewController *textStylePickerViewController = [[CMTextStylePickerViewController alloc] initWithNibName:@"CMTextStylePickerViewController" bundle:nil];
+    textStylePickerViewController.showsDefaultSettingsControls = YES;
 	return [textStylePickerViewController autorelease];
 }
 
@@ -244,13 +245,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return [tableLayout count];
+    return (self.showsDefaultSettingsControls ? [tableLayout count] : [tableLayout[1] count]);
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [[tableLayout objectAtIndex:section] count];
+    return (self.showsDefaultSettingsControls ?
+            [[tableLayout objectAtIndex:section] count] :
+            1);
 }
 
 
@@ -264,7 +267,9 @@
 //        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 //    }
     
-    UITableViewCell *cell = [[tableLayout objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    UITableViewCell *cell = (self.showsDefaultSettingsControls ?
+                             [[tableLayout objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] :
+                             [[tableLayout objectAtIndex:1] objectAtIndex:indexPath.section]);
     return cell;
 }
 
@@ -313,13 +318,13 @@
 #pragma mark UITableViewDelegate methods
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [[tableLayout objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
 	return cell.bounds.size.height;
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSIndexPath *selectedIndexPath = indexPath;
-	UITableViewCell *cell = [[tableLayout objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
 	
 	if (cell == self.sizeCell || cell == self.defaultSettingsCell) {
 		// Disable selection of cell
@@ -330,7 +335,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [[tableLayout objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
 	
 	if (cell == self.fontCell) {
 		CMFontSelectTableViewController *fontSelectTableViewController = [[CMFontSelectTableViewController alloc] initWithNibName:@"CMFontSelectTableViewController" bundle:nil];
