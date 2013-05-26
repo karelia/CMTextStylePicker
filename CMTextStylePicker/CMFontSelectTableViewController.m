@@ -193,9 +193,19 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
 	CMFontStyleSelectTableViewController *fontStyleSelectTableViewController = [[CMFontStyleSelectTableViewController alloc] initWithNibName:@"CMFontStyleSelectTableViewController" bundle:nil];
-	fontStyleSelectTableViewController.fontFamilyName = [self.fontFamilyNames objectAtIndex:indexPath.row];
-	fontStyleSelectTableViewController.selectedFont = self.selectedFont;
-	fontStyleSelectTableViewController.delegate = self;
+    NSString *family = [self.fontFamilyNames objectAtIndex:indexPath.row];
+	fontStyleSelectTableViewController.fontFamilyName = family;
+    
+    // Select immediately and notify delegate, like iWork 
+    UIFont *font = [UIFont fontWithName:[[UIFont fontNamesForFamilyName:family] objectAtIndex:0]
+                                   size:self.selectedFont.pointSize];
+    
+    self.selectedFont = font;
+	[delegate fontSelectTableViewController:self didSelectFont:font];
+	
+    // Pass on through for detail
+	fontStyleSelectTableViewController.selectedFont = font;
+    fontStyleSelectTableViewController.delegate = self;
 	[self.navigationController pushViewController:fontStyleSelectTableViewController animated:YES];
 	[fontStyleSelectTableViewController release];
 }
