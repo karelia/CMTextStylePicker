@@ -45,7 +45,7 @@
     [super viewDidLoad];
 
 	if (nil == self.title) {
-		self.title = @"Text Colour";
+		self.title = NSLocalizedString(@"Text Color", "view title");
 	}
 	
 	self.availableColours = [[[NSArray alloc] initWithObjects:

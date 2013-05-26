@@ -34,6 +34,12 @@
 @synthesize delegate;
 @synthesize fontFamilyNames, selectedFont;
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self.title = NSLocalizedString(@"Fonts", "view title");
+    return self;
+}
 
 #pragma mark -
 #pragma mark FontStyleSelectTableViewControllerDelegate methods

@@ -181,7 +181,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-	self.title = @"Text Style";
+	self.title = NSLocalizedString(@"Text Options", "view title");
 		
 	self.fontSizeControl.minimumAllowedValue = 8;
 	self.fontSizeControl.maximumAllowedValue = 72;
