@@ -115,7 +115,7 @@
 }
 
 - (void)updateFontColourSelections {
-	self.fontCell.detailTextLabel.text = selectedFont.fontName;
+	self.fontCell.detailTextLabel.text = selectedFont.familyName;
 	self.fontSizeControl.value = selectedFont.pointSize;
 }
 
@@ -170,7 +170,7 @@
 
 - (void)fontSelectTableViewController:(CMFontSelectTableViewController *)fontSelectTableViewController didSelectFont:(UIFont *)textFont {
 	self.selectedFont = textFont;
-	self.fontCell.detailTextLabel.text = [textFont fontName];
+	self.fontCell.detailTextLabel.text = textFont.familyName;
 	[self notifyDelegateSelectedFontChanged];
 }
 
