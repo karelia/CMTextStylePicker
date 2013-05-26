@@ -56,11 +56,17 @@
 
 }
 
-/*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    // Start with the selected font in view
+    NSUInteger selection = [self.fontFamilyNames indexOfObject:self.selectedFont.familyName];
+    
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:selection inSection:0]
+                          atScrollPosition:UITableViewScrollPositionMiddle
+                                  animated:NO];
 }
-*/
+
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
