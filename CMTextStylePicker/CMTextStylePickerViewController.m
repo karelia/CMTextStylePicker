@@ -50,6 +50,14 @@
 @synthesize sizeCell, colourCell, fontCell, defaultSettingsCell, applyAsDefaultCell, defaultSettingsSwitch;
 @synthesize colourView, doneButtonItem;
 
+- (void)setSelectedFont:(UIFont *)font;
+{
+	[font retain];
+	[selectedFont release]; selectedFont = font;
+	
+	self.fontCell.detailTextLabel.text = font.familyName;
+}
+
 + (instancetype)textStylePickerViewController {
 	CMTextStylePickerViewController *textStylePickerViewController = [[self alloc] initWithNibName:@"CMTextStylePickerViewController" bundle:nil];
     textStylePickerViewController.showsDefaultSettingsControls = YES;
@@ -170,7 +178,6 @@
 
 - (void)fontSelectTableViewController:(CMFontSelectTableViewController *)fontSelectTableViewController didSelectFont:(UIFont *)textFont {
 	self.selectedFont = textFont;
-	self.fontCell.detailTextLabel.text = textFont.familyName;
 	[self notifyDelegateSelectedFontChanged];
 }
 
