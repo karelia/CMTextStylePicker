@@ -50,8 +50,8 @@
 @synthesize sizeCell, colourCell, fontCell, defaultSettingsCell, applyAsDefaultCell, defaultSettingsSwitch;
 @synthesize colourView, doneButtonItem;
 
-+ (CMTextStylePickerViewController *)textStylePickerViewController {
-	CMTextStylePickerViewController *textStylePickerViewController = [[CMTextStylePickerViewController alloc] initWithNibName:@"CMTextStylePickerViewController" bundle:nil];
++ (instancetype)textStylePickerViewController {
+	CMTextStylePickerViewController *textStylePickerViewController = [[self alloc] initWithNibName:@"CMTextStylePickerViewController" bundle:nil];
     textStylePickerViewController.showsDefaultSettingsControls = YES;
 	return [textStylePickerViewController autorelease];
 }

@@ -55,7 +55,7 @@
 @property (nonatomic, retain)	IBOutlet	CMUpDownControl		*fontSizeControl;
 @property (nonatomic, retain)	IBOutlet	UITableViewCell		*sizeCell;
 
-+ (CMTextStylePickerViewController *)textStylePickerViewController;
++ (instancetype)textStylePickerViewController;
 - (IBAction)doneAction;
 - (IBAction)defaultTextSettingsAction:(UISwitch *)defaultSwitch;
 - (IBAction)fontSizeValueChanged:(CMUpDownControl *)control;
