@@ -35,6 +35,7 @@
 
 @property (nonatomic, assign)	double		maximumValue;
 @property (nonatomic, assign)	double		minimumValue;
+@property(nonatomic) double stepValue;
 
 @property (nonatomic, assign)	double		value;
 

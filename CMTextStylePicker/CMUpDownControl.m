@@ -36,20 +36,38 @@
 @synthesize maximumValue, minimumValue, value;
 
 
+- (id)initWithFrame:(CGRect)frame;
+{
+	if (self = [super initWithFrame:frame])
+	{
+		_stepValue = 1;
+	}
+	return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder;
+{
+	if (self = [super initWithCoder:aDecoder])
+	{
+		_stepValue = 1;
+	}
+	return self;
+}
+
 - (void)processTouchUp {
 	BOOL valueChanged = NO;
 	
 	if (_topHalfSelected) {
 		// Attempt to increment value
 		if (value < maximumValue) {
-			value++;
+			value += self.stepValue;
 			valueChanged = YES;
 		}
 	}
 	else {
 		// Attempt to decrement value
 		if (value > minimumValue) {
-			value--;
+			value -= self.stepValue;
 			valueChanged = YES;
 		}
 	}
