@@ -33,10 +33,10 @@
 	BOOL _touchNeedsDisplay;
 }
 
-@property (nonatomic, assign)	NSInteger		maximumAllowedValue;
-@property (nonatomic, assign)	NSInteger		minimumAllowedValue;
+@property (nonatomic, assign)	double		maximumAllowedValue;
+@property (nonatomic, assign)	double		minimumAllowedValue;
 
-@property (nonatomic, assign)	NSInteger		value;
+@property (nonatomic, assign)	double		value;
 
 @property (nonatomic, copy)		NSString		*unitsString;	// defaults to nil
 
