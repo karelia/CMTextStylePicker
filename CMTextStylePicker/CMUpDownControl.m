@@ -33,7 +33,7 @@
 
 @implementation CMUpDownControl
 
-@synthesize maximumAllowedValue, minimumAllowedValue, value;
+@synthesize maximumValue, minimumValue, value;
 
 
 - (void)processTouchUp {
@@ -41,14 +41,14 @@
 	
 	if (_topHalfSelected) {
 		// Attempt to increment value
-		if (value < maximumAllowedValue) {
+		if (value < maximumValue) {
 			value++;
 			valueChanged = YES;
 		}
 	}
 	else {
 		// Attempt to decrement value
-		if (value > minimumAllowedValue) {
+		if (value > minimumValue) {
 			value--;
 			valueChanged = YES;
 		}
@@ -287,7 +287,7 @@
 	// Bottom side
 	CGPathAddLineToPoint(upArrowPath, NULL, upArrowRect.origin.x, upArrowRect.origin.y+upArrowRect.size.height);
 	CGPathCloseSubpath(upArrowPath);
-	if (value >= maximumAllowedValue) {
+	if (value >= maximumValue) {
 		// "Disabled"
 		CGContextSetRGBFillColor(c, 195.0/255.0, 199.0/255.0, 204.0/255.0, 1.0);
 	}
@@ -320,7 +320,7 @@
 	// Top side
 	CGPathAddLineToPoint(downArrowPath, NULL, downArrowRect.origin.x+downArrowRect.size.width, downArrowRect.origin.y);
 	CGPathCloseSubpath(downArrowPath);
-	if (value <= minimumAllowedValue) {
+	if (value <= minimumValue) {
 		// "Disabled"
 		CGContextSetRGBFillColor(c, 195.0/255.0, 199.0/255.0, 204.0/255.0, 1.0);
 	}
@@ -377,10 +377,10 @@
 	}
 
 	// "Disable" press if at min or max
-	if (_topHalfSelected && value >= maximumAllowedValue) {
+	if (_topHalfSelected && value >= maximumValue) {
 		return NO;
 	}
-	else if (!_topHalfSelected && value <= minimumAllowedValue) {
+	else if (!_topHalfSelected && value <= minimumValue) {
 		return NO;
 	}
 	

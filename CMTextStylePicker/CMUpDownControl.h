@@ -33,8 +33,8 @@
 	BOOL _touchNeedsDisplay;
 }
 
-@property (nonatomic, assign)	double		maximumAllowedValue;
-@property (nonatomic, assign)	double		minimumAllowedValue;
+@property (nonatomic, assign)	double		maximumValue;
+@property (nonatomic, assign)	double		minimumValue;
 
 @property (nonatomic, assign)	double		value;
 

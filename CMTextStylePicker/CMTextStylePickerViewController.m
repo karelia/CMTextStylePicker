@@ -190,8 +190,8 @@
 
 	self.title = NSLocalizedString(@"Text Options", "view title");
 		
-	self.fontSizeControl.minimumAllowedValue = 8;
-	self.fontSizeControl.maximumAllowedValue = 72;
+	self.fontSizeControl.minimumValue = 8;
+	self.fontSizeControl.maximumValue = 72;
 	
 	[self updateFontColourSelections];
 	
