@@ -38,4 +38,6 @@
 
 @property (nonatomic, assign)	NSInteger		value;
 
+@property (nonatomic, copy)		NSString		*unitsString;	// defaults to nil
+
 @end

@@ -341,7 +341,7 @@
 	
 	// Draw text
 	NSString *valueStr = [NSString stringWithFormat:@"%d", value];
-	NSString *units = @"pt";
+	NSString *units = self.unitsString;
 	
 	[[UIColor colorWithRed:66.0/255.0 green:66.0/255.0 blue:66.0/255.0 alpha:1.0] set];
 	UIFont *valueFont = [UIFont systemFontOfSize:36.0];
