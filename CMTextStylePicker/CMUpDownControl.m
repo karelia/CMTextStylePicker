@@ -353,8 +353,14 @@
 	CGPoint valuePoint = CGPointMake(10.0, (bounds.size.height-valueSize.height)/2);
 	CGPoint unitsPoint = CGPointMake(valuePoint.x+valueSize.width+3.0, (valuePoint.y+valueSize.height)-unitsSize.height-5.0);
 	
-	[valueStr drawAtPoint:valuePoint forWidth:valueSize.width withFont:valueFont minFontSize:valueFont.pointSize actualFontSize:NULL lineBreakMode:UILineBreakModeClip baselineAdjustment:UIBaselineAdjustmentAlignBaselines];
-	[units drawAtPoint:unitsPoint forWidth:unitsSize.width withFont:unitsFont minFontSize:unitsFont.pointSize actualFontSize:NULL lineBreakMode:UILineBreakModeClip baselineAdjustment:UIBaselineAdjustmentAlignBaselines];
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
+#define LINEBREAKMODE UILineBreakModeClip
+#else
+#define LINEBREAKMODE NSLineBreakByClipping
+#endif
+	
+	[valueStr drawAtPoint:valuePoint forWidth:valueSize.width withFont:valueFont minFontSize:valueFont.pointSize actualFontSize:NULL lineBreakMode:LINEBREAKMODE baselineAdjustment:UIBaselineAdjustmentAlignBaselines];
+	[units drawAtPoint:unitsPoint forWidth:unitsSize.width withFont:unitsFont minFontSize:unitsFont.pointSize actualFontSize:NULL lineBreakMode:LINEBREAKMODE baselineAdjustment:UIBaselineAdjustmentAlignBaselines];
 }
 
 
