@@ -58,6 +58,14 @@
 	self.fontCell.detailTextLabel.text = font.familyName;
 }
 
+- (void)setSelectedTextColour:(UIColor *)color;
+{
+	[color retain];
+	[selectedTextColour release]; selectedTextColour = color;
+	
+	self.colourView.colour = color;	// Update the colour swatch
+}
+
 + (instancetype)textStylePickerViewController {
 	CMTextStylePickerViewController *textStylePickerViewController = [[self alloc] initWithNibName:@"CMTextStylePickerViewController" bundle:nil];
     textStylePickerViewController.showsDefaultSettingsControls = YES;
@@ -168,7 +176,6 @@
 
 - (void)colourSelectTableViewController:(CMColourSelectTableViewController *)colourSelectTableViewController didSelectColour:(UIColor *)colour {
 	self.selectedTextColour = colour;
-	self.colourView.colour = colour;	// Update the colour swatch
 	[self notifyDelegateSelectedTextColorChanged];
 }
 
